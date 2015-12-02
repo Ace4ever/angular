@@ -1,0 +1,48 @@
+<!doctype html>
+
+<html lang="en">
+
+
+  <head>
+    <meta charset="utf-8">
+    <title>Movie History</title>
+
+    <link rel="stylesheet" type="text/css" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
+<!--     <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> -->
+
+
+  </head>
+
+  <body ng-app="TodoApp">
+    <section ng-controller="TodoCtrl">
+      <h1>{{ title }}</h1>
+
+      <input type="text" ng-model="searchText" />
+
+      <div>
+        <ul ng-repeat="todo in todos | filter: searchText">
+          <li>{{ todo.name }} 
+          <button ng-click="killTodo(todo)">Finish</button></li>
+        </ul>
+      </div>
+
+      <div>
+        Grouped tasks:
+        <select
+            ng-model="theTodo"
+            ng-options="value.name group by value.complete for value in todos">
+        </select>
+      </div>
+
+      <h1>{{ theTodo.name }}</h1>
+
+    </section>
+
+
+    <script src="lib/bower_components/angular/angular.min.js"></script>
+    <script src="app/Todo.js"></script>
+  </body>
+
+</html>
+
